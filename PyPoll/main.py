@@ -71,4 +71,22 @@ with open(csvpath, newline='') as csvfile:
     print(elected)
     print(" ")
     print("************************************")
+
+    # Send output to csv file
+    # Specify the file to write to
+    output_path = os.path.join("..", "output", "newpollpy.csv")
+
+    # Open the file using "write" mode. Specify the variable to hold the contents
+    with open(output_path,'w' , newline='') as csvfile:
+
+        # Initialize csv.writer
+        csvwriter = csv.writer(csvfile, delimiter=' ')
+
+        # Write the rows to csv (column headers)
+        csvwriter.writerow("Total Votes Cast: " + str(ttl_votes))
+        csvwriter.writerow("Khan: " + str(ttl_khan_votes) + " | " + str(pct_khan_votes) +"%")
+        csvwriter.writerow("Correy: " + str(ttl_correy_votes) + " | " + str(pct_correy_votes) +"%")
+        csvwriter.writerow("Li: " + str(ttl_li_votes) + " | " + str(pct_li_votes) +"%")
+        csvwriter.writerow("O'Tooley: " + str(ttl_tooley_votes) + " | " + str(pct_tooley_votes) +"%")
+        csvwriter.writerow("Other: " + str(ttl_other_votes) + " | " + str(pct_other_votes) +"%")
 #
